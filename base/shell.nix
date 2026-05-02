@@ -11,5 +11,12 @@
     shellAliases = {
       nrs = "nixos-rebuild switch --flake /home/${baseVars.username}/nix --sudo";
     };
+
+    zplug = {
+      enable = true;
+      plugins = [
+      { name = "jeffreytse/zsh-vi-mode"; }
+      ];
+    };
   };
 }
