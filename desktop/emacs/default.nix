@@ -9,7 +9,7 @@
                 (add-to-list 'custom-theme-load-path "${pkgs.runCommand "base16-emacs" {} ''
 mkdir $out; cp ${config.scheme inputs.base16-emacs} $out/base16-${config.scheme.scheme-name}-theme.el''}")
                 (load-theme 'base16-${config.scheme.scheme-name}) 
-                (load-file "${./assets/emacs/init.el}")
+                (load-file "${./init.el}")
     '';
 
     extraPackages = epkgs: with epkgs; [

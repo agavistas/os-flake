@@ -1,7 +1,7 @@
 {
   imports = [
     ./audio.nix
-    ./emacs.nix
+    ./emacs
     ./greeter.nix
     ./niri.nix
     ./packages.nix
