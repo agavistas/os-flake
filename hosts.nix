@@ -12,12 +12,14 @@ in
   nixbox = inputs.nixpkgs.lib.nixosSystem {
     modules = [ 
       ./base
-      ./base/keyd/bettercaps.nix
       ./desktop
       ./bootloader/systemd-boot.nix
       ./hosts/x86_64-linux/nixbox/hardware-configuration.nix
       ./disks/btrfs-luks.nix
       inputs.disko.nixosModules.disko
+
+      inputs.base16.nixosModule
+      { scheme = "${themes/sample.yaml}"; }
     ];
     specialArgs = specialArgs // {
       hostVars = {

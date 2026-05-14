@@ -32,9 +32,6 @@
 ;; Prevent Dired from opening a trillion buffers
 (setf dired-kill-when-opening-new-dired-buffer t)
 
-;; Load badwolf custom-theme
-(load-theme 'badwolf t)
-
 (custom-set-variables
  ;; Enable relative line numbers
  '(display-line-numbers-type (quote relative))

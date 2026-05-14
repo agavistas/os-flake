@@ -16,6 +16,12 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    base16.url = "github:SenchoPens/base16.nix";
+    base16-emacs = {
+      url = "github:tinted-theming/base16-emacs";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, disko, ... }: {
