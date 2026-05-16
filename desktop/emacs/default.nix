@@ -4,11 +4,19 @@
   hm.programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
-    extraConfig = ''
+    extraConfig = 
+    let themeFile = config.scheme inputs.base16-emacs;
+    in ''
                 (setq inferior-lisp-program "${pkgs.sbcl}/bin/sbcl")
-                (add-to-list 'custom-theme-load-path "${pkgs.runCommand "base16-emacs" {} ''
-mkdir $out; cp ${config.scheme inputs.base16-emacs} $out/base16-${config.scheme.scheme-name}-theme.el''}")
-                (load-theme 'base16-${config.scheme.scheme-name}) 
+                (add-to-list 'custom-theme-load-path "${
+                  pkgs.runCommand "base16-emacs" {} ''mkdir $out; cp ${themeFile} $out/base16-${config.scheme.scheme-name}-theme.el''
+                }")
+                (custom-set-variables
+                  '(base16-theme-distinct-fringe-background nil)
+                  '(custom-safe-themes
+                    '("${builtins.hashFile "sha256" themeFile}"))
+                ) 
+                (load-theme 'base16-${config.scheme.scheme-name})
                 (load-file "${./init.el}")
     '';
 
